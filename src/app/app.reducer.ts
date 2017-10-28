@@ -1,5 +1,4 @@
-
-import {ADD, All} from './app.actions';
+import {All, REFRESH} from './app.actions';
 
 export interface FirebaseObject {
     id: string;
@@ -25,14 +24,10 @@ const initialState: State = {
 export function reducer(state = initialState, action: All): State {
     switch (action.type) {
 
-        case ADD: {
-
+        case REFRESH: {
             return {
-                collections: {
-                    ...state.collections,
-                    [action.payload.id]: action.payload
-                }
-            };
+                collections: {...action.payload}
+            }
         }
 
         default: { return state; }
